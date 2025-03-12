@@ -1,0 +1,11 @@
+[package]
+name = "pts_gem-chat"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+reqwest = { version = "0.12.12", features = ["json"] }
+tokio = { version = "1.44.0", features = ["macros", "rt-multi-thread"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+dotenvy = "0.15.7"
