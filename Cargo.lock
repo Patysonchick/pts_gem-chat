@@ -41,7 +41,7 @@ dependencies = [
  "miniz_oxide",
  "object",
  "rustc-demangle",
-    "windows-targets 0.52.6",
+ "windows-targets 0.52.6",
 ]
 
 [[package]]
@@ -242,7 +242,7 @@ dependencies = [
  "cfg-if",
  "libc",
  "wasi 0.13.3+wasi-0.2.2",
-    "windows-targets 0.52.6",
+ "windows-targets 0.52.6",
 ]
 
 [[package]]
@@ -779,7 +779,7 @@ dependencies = [
  "system-configuration",
  "tokio",
  "tokio-native-tls",
-    "tokio-socks",
+ "tokio-socks",
  "tower",
  "tower-service",
  "url",
@@ -1064,7 +1064,7 @@ version = "1.0.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b6aaf5339b578ea85b50e080feb250a3e8ae8cfcdff9a461c9ec2904bc923f52"
 dependencies = [
-    "thiserror-impl",
+ "thiserror-impl",
 ]
 
 [[package]]
@@ -1073,9 +1073,9 @@ version = "1.0.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4fee6c4efc90059e10f81e6d42c60a18f76588c3d74cb83a0b242a2b6c7504c1"
 dependencies = [
-    "proc-macro2",
-    "quote",
-    "syn",
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -1141,10 +1141,10 @@ version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0d4770b8024672c1101b3f6733eab95b18007dbe0847a8afe341fcf79e06043f"
 dependencies = [
-    "either",
-    "futures-util",
-    "thiserror",
-    "tokio",
+ "either",
+ "futures-util",
+ "thiserror",
+ "tokio",
 ]
 
 [[package]]
@@ -1372,7 +1372,7 @@ checksum = "4286ad90ddb45071efd1a66dfa43eb02dd0dfbae1545ad6cc3c51cf34d7e8ba3"
 dependencies = [
  "windows-result",
  "windows-strings",
-    "windows-targets 0.53.0",
+ "windows-targets 0.53.0",
 ]
 
 [[package]]
@@ -1381,7 +1381,7 @@ version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "06374efe858fab7e4f881500e6e86ec8bc28f9462c47e5a9941a0142ad86b189"
 dependencies = [
-    "windows-link",
+ "windows-link",
 ]
 
 [[package]]
@@ -1390,7 +1390,7 @@ version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "87fa48cc5d406560701792be122a10132491cff9d0aeb23583cc2dcafc847319"
 dependencies = [
-    "windows-link",
+ "windows-link",
 ]
 
 [[package]]
@@ -1399,7 +1399,7 @@ version = "0.52.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "282be5f36a8ce781fad8c8ae18fa3f9beff57ec1b52cb3de0789201425d9a33d"
 dependencies = [
-    "windows-targets 0.52.6",
+ "windows-targets 0.52.6",
 ]
 
 [[package]]
@@ -1408,7 +1408,7 @@ version = "0.59.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e38bc4d79ed67fd075bcc251a1c39b32a1776bbe92e5bef1f0bf1f8c531853b"
 dependencies = [
-    "windows-targets 0.52.6",
+ "windows-targets 0.52.6",
 ]
 
 [[package]]
@@ -1417,14 +1417,14 @@ version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b724f72796e036ab90c1021d4780d4d3d648aca59e491e6b98e725b84e99973"
 dependencies = [
-    "windows_aarch64_gnullvm 0.52.6",
-    "windows_aarch64_msvc 0.52.6",
-    "windows_i686_gnu 0.52.6",
-    "windows_i686_gnullvm 0.52.6",
-    "windows_i686_msvc 0.52.6",
-    "windows_x86_64_gnu 0.52.6",
-    "windows_x86_64_gnullvm 0.52.6",
-    "windows_x86_64_msvc 0.52.6",
+ "windows_aarch64_gnullvm 0.52.6",
+ "windows_aarch64_msvc 0.52.6",
+ "windows_i686_gnu 0.52.6",
+ "windows_i686_gnullvm 0.52.6",
+ "windows_i686_msvc 0.52.6",
+ "windows_x86_64_gnu 0.52.6",
+ "windows_x86_64_gnullvm 0.52.6",
+ "windows_x86_64_msvc 0.52.6",
 ]
 
 [[package]]
@@ -1433,14 +1433,14 @@ version = "0.53.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b1e4c7e8ceaaf9cb7d7507c974735728ab453b67ef8f18febdd7c11fe59dca8b"
 dependencies = [
-    "windows_aarch64_gnullvm 0.53.0",
-    "windows_aarch64_msvc 0.53.0",
-    "windows_i686_gnu 0.53.0",
-    "windows_i686_gnullvm 0.53.0",
-    "windows_i686_msvc 0.53.0",
-    "windows_x86_64_gnu 0.53.0",
-    "windows_x86_64_gnullvm 0.53.0",
-    "windows_x86_64_msvc 0.53.0",
+ "windows_aarch64_gnullvm 0.53.0",
+ "windows_aarch64_msvc 0.53.0",
+ "windows_i686_gnu 0.53.0",
+ "windows_i686_gnullvm 0.53.0",
+ "windows_i686_msvc 0.53.0",
+ "windows_x86_64_gnu 0.53.0",
+ "windows_x86_64_gnullvm 0.53.0",
+ "windows_x86_64_msvc 0.53.0",
 ]
 
 [[package]]

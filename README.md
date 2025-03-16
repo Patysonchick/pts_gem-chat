@@ -1,6 +1,9 @@
 # pts_gem-chat
 
-Unlimited and uncensored chat with Google Gemini models. You can use many experimental Google models for free/
+## **Unlimited and uncensored**
+
+Local without limitations(expect token limit) chat with Google Gemini models. You can use many experimental Google
+models for free.
 
 ## Usage
 
