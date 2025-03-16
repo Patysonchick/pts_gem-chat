@@ -1,29 +1,33 @@
 mod prompt;
 
-use prompt::{error, send_prompt, successful, successful::Role, successful::Role::*};
-use std::{error::Error, io};
+use prompt::{Content, Part, Role::*, error, send_prompt, success};
+use std::{error::Error, io, io::Write};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     dotenvy::dotenv()?;
 
-    let mut prompts: Vec<(String, Role)> = Vec::new();
+    let mut history = Vec::new();
 
     loop {
-        println!("\n>>>");
+        print!("\n>>> ");
+        io::stdout().flush()?;
 
         let mut prompt = String::new();
         io::stdin().read_line(&mut prompt)?;
         prompt = prompt.trim().to_string();
 
-        if prompt == "exit" {
+        if prompt.to_lowercase() == "exit" {
             break;
         }
 
-        prompts.push((prompt, User));
+        history.push(Content {
+            role: User,
+            parts: vec![Part { text: prompt }],
+        });
 
         println!("\nThinking...\n");
-        let res = send_prompt(&prompts).await?;
+        let res = send_prompt(history.clone()).await?;
 
         let status = res.status();
         let text = res.text().await?;
@@ -33,7 +37,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
         // println!("\n{}\n", text);
 
-        let json: Result<successful::Response, _> = serde_json::from_str(&text);
+        let json: Result<success::Response, _> = serde_json::from_str(&text);
         match json {
             Ok(json) => println!("{}", json.candidates[0].content.parts[0].text),
             Err(_) => {
