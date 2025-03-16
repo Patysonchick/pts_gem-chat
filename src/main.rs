@@ -39,7 +39,18 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
         let json: Result<success::Response, _> = serde_json::from_str(&text);
         match json {
-            Ok(json) => println!("{}", json.candidates[0].content.parts[0].text),
+            Ok(json) => {
+                let response = json.candidates[0].content.parts[0].text.clone();
+
+                history.push(Content {
+                    role: Model,
+                    parts: vec![Part {
+                        text: response.clone(),
+                    }],
+                });
+
+                println!("{}", response);
+            }
             Err(_) => {
                 let json: error::Response = serde_json::from_str(&text)?;
                 println!("Error, block reason {}", json.prompt_feedback.block_reason);
