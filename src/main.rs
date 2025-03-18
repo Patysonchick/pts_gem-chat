@@ -17,8 +17,14 @@ async fn main() -> Result<(), Box<dyn Error>> {
         io::stdin().read_line(&mut prompt)?;
         prompt = prompt.trim().to_string();
 
-        if prompt.to_lowercase() == "exit" {
-            break;
+        match prompt.to_lowercase().as_str() {
+            "/exit" => break,
+            "/clear" => {
+                history.clear();
+                println!("\nHistory cleared!");
+                continue;
+            }
+            _ => (),
         }
 
         history.push(Content {
@@ -35,8 +41,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
             eprintln!("{:?}", text);
         }
 
-        // println!("\n{}\n", text);
-
         let json: Result<success::Response, _> = serde_json::from_str(&text);
         match json {
             Ok(json) => {
@@ -52,6 +56,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 println!("{}", response);
             }
             Err(_) => {
+                println!("\n{}\n", text);
                 let json: error::Response = serde_json::from_str(&text)?;
                 println!("Error, block reason {}", json.prompt_feedback.block_reason);
             }

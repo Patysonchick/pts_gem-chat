@@ -10,6 +10,11 @@ models for free.
 1. Install built or build from source by running `cargo build --release`.
 2. Put in folder with built binary or repo folder `.env` file.
 
+### In chat commands(not matching case)
+
+* `/exit` - stops chat
+* `/clear` - clears chat
+
 ## Configuring `.env`
 
 ### Create `.env` file with next content, for example
