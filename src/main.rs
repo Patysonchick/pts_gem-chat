@@ -1,10 +1,13 @@
+mod check;
 mod prompt;
 
 use prompt::{Content, Part, Role::*, error, send_prompt, success};
-use std::{env, env::VarError, error::Error, io, io::Write};
+use std::{error::Error, io, io::Write};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
+    clear_screen()?;
+
     match dotenvy::dotenv() {
         Ok(path) => println!("File {} loaded", path.display()),
         Err(e) => {
@@ -12,7 +15,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
             return Err(e.into());
         }
     }
-    check_env_file()?;
+    check::env_file()?;
+    check::connection().await?;
 
     let mut history = Vec::new();
     loop {
@@ -26,8 +30,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
         match prompt.to_lowercase().as_str() {
             "/exit" => break,
             "/clear" => {
+                clear_screen()?;
+
                 history.clear();
                 println!("\nHistory cleared!");
+
                 continue;
             }
             _ => (),
@@ -45,7 +52,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let status = res.status();
                 match res.text().await {
                     Ok(text) => {
-                        if status != reqwest::StatusCode::OK {
+                        if !status.is_success() {
                             eprintln!("{:?}", text);
                         }
 
@@ -75,7 +82,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                             }
                         }
                     }
-                    Err(e) => println!("Failed to get text: {}", e),
+                    Err(e) => println!("Failed to get text:\n{}", e),
                 }
             }
             Err(e) => println!("Failed send request, please try again:\n{}", e),
@@ -85,26 +92,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn check_env_file() -> Result<(), Box<dyn Error>> {
-    let mut is_err = false;
-    for i in ["API_KEY", "MODEL", "API_VERSION", "PROXY"] {
-        match env::var(i) {
-            Ok(_) => (),
-            Err(e) => {
-                match e {
-                    VarError::NotPresent => println!("Environment variable {} is not present", i),
-                    VarError::NotUnicode(_) => {
-                        println!("Environment variable {} is not Unicode", i)
-                    }
-                }
-                is_err = true;
-            }
-        }
-    }
-
-    if is_err {
-        return Err("Environment variable not set".into());
-    }
+fn clear_screen() -> Result<(), Box<dyn Error>> {
+    print!("\x1B[2J\x1B[1;1H"); // очистка экрана(может плохо срабатывать на старой винде, надо тестить)
+    io::stdout().flush()?;
 
     Ok(())
 }
