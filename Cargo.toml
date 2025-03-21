@@ -9,6 +9,7 @@ tokio = { version = "1.44.1", features = ["macros", "rt-multi-thread"], default-
 serde = { version = "1.0.219", features = ["derive"], default-features = false }
 serde_json = { version = "1.0.140", features = ["alloc"], default-features = false }
 dotenvy = "0.15.7"
+clearscreen = "4.0.1"
 
 [profile.release]
 lto = true

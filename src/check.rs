@@ -8,9 +8,9 @@ pub fn env_file() -> Result<(), Box<dyn Error>> {
             Ok(_) => (),
             Err(e) => {
                 match e {
-                    VarError::NotPresent => println!("Environment variable {} is not present", i),
+                    VarError::NotPresent => eprintln!("Environment variable {} is not present", i),
                     VarError::NotUnicode(_) => {
-                        println!("Environment variable {} is not Unicode", i)
+                        eprintln!("Environment variable {} is not Unicode", i)
                     }
                 }
                 is_err = true;
@@ -44,7 +44,7 @@ pub async fn connection() -> Result<(), Box<dyn Error>> {
             }
         }
         Err(e) => {
-            println!("Connection to google.com failed:\n{}", e);
+            eprintln!("Connection to google.com failed:\n{}", e);
             return Err(e.into());
         }
     }
