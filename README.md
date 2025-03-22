@@ -5,17 +5,19 @@
 Local without limitations(expect token limit) chat with Google Gemini models. You can use many experimental Google
 models for free.
 
-## Usage
+## Getting Started
 
 1. Install built or build from source by running `cargo build --release`.
-2. Put in folder with built binary or repo folder `.env` file.
+2. Put in the folder with built binary or repo folder [`.env` file](#Configuring).
 
-### In chat commands(not matching case)
+## Usage
+
+In chat commands(not matching case):
 
 * `/exit` - stops chat
 * `/clear` - clears chat
 
-## Configuring `.env`
+## Configuring
 
 ### Create `.env` file with next content, for example
 
@@ -27,3 +29,8 @@ PROXY=socks5://127.0.0.1:2080
 ```
 
 Get your API key in https://aistudio.google.com/apikey. If you won't use proxy, leave the field blank.
+
+## Roadmap
+
+* Translate main logic to Rust library(maybe by name `pts_ai_lib` or similar)
+* Made Rust-built self-hosted web service for AI's like Gemini without restrictions.
